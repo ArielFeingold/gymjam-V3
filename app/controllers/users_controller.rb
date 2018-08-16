@@ -1,3 +1,4 @@
+require 'pry-remote'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+      # binding.remote_pry
     if @user.save
       render json: @user, status: :created, location: @user
     else
