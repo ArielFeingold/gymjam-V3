@@ -3,6 +3,10 @@ import Signup from '../components/Signup'
 
 class CreateUser extends React.Component {
 
+  state = {
+    data: ''
+  }
+
   createUser = user => {
 
     let url = `http://localhost:3001/api/users?`
@@ -22,7 +26,9 @@ class CreateUser extends React.Component {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
   .then(response => response.json())
-  .then(data => console.log("here", data))// parses response to JSON
+  .then(data => {
+    this.setState({data: data})
+  })
   }
 
   render() {
